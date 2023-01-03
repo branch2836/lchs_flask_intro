@@ -8,7 +8,7 @@
     </head>
     <body>
         <section class="centered">
-            <form>
+            <form action="/hex_form" method="POST">
                 <h2>Hex Color Codes</h2>
                 <p>Rules:</p>
                 <ul>
@@ -18,10 +18,10 @@
                     <li>Each pair of characters controls the amount of red, green, or
                         blue in the color mix.</li>
                 </ul>
-                <p class="feedback">Feedback will appear here...</p>
+                <p class="feedback">{{feedback}}</p>
                 <hr>
-                <label>Enter a code: #<input type="text" name="hex" value="FF0000" required/></label><br>
-                <input type="color" value="#FF0000" disabled/><br>
+                <label>Enter a code: #<input type="text" name="hex" value="{{hex}}" required/></label><br>
+                <input type="color" value="#{{hex}}" disabled/><br>
                 <button>Check Hex Code</button>
                 <hr>
                 <img src="{{url_for('static', filename='hex_figure.png')}}" alt="Hex code for red." width="100%"/>
