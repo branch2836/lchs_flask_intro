@@ -4,13 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Web Caesar Cipher</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
         
     </head>
     <body>
 
-        <!-- Paste the form code from your Web Form (Part 1) project here.
-        OR delete this file and drag-and-drop yours into the 'templates' folder,
-        then rename it 'user_message.html'. -->
-        
+        <form action="/user_message" method="POST">
+            <h2>Caesar Cipher</h2>
+            <label>Message to Change</label><br>
+            <textarea name="message" rows="5" cols="25" placeholder="Enter your message here"></textarea><br>
+            <label>How many places to shift<input type="number" name="shift" min="1" max="25" placeholder="1 to 25"></label><br>
+            <label>Encrypt<input type="radio" name = "code-action"></label><br>
+            <label>Decrypt<input type="radio" name = "code-action"></label><br>
+            <button>Encode</button>
+        </form>
+       
+        <p>Original Messsage: {{original_msg}}</p>
+        <p>Coded Message: {{coded_msg}}</p>
     </body>
 </html>
