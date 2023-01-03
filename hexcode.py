@@ -4,12 +4,28 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 
 # Code the 'valid_hex_chars' function here:
+def valid_hex_chars(hex):
+    valid = "1234567890abcdefABCDEF"
+    isValid = True
+    for char in hex:
+        if char not in valid:
+            isValid = False
+            break;
+    
+    return isValid
 
 @app.route('/hex_form', methods=["GET", "POST"])
 def hex_form():
     if request.method == 'POST':
         hex = request.form['hex']
-        feedback = "Successful Submission"
+        if len(hex) != 6:
+            feedback = "Enter a correct Hex Value"
+            hex= "FF0000"
+        elif not valid_hex_chars(hex):
+            hex="FF0000"
+            feedback="Valid Hex characters are 0-9 and A-F"
+        else:
+            feedback = "Successful Submission"
     else:        
         hex = '00FF00'
         feedback = "feedback"
